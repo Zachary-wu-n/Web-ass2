@@ -1,0 +1,822 @@
+﻿/* layout.css - 布局样式 */
+/* 头部样式 */
+.header {
+    background-color: var(--background-color);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: var(--spacing-sm) 0;
+}
+
+    .header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+.logo h1 {
+    margin-bottom: 0;
+    font-size: var(--font-size-2xl);
+}
+
+    .logo h1 a {
+        color: var(--text-color);
+        text-decoration: none;
+    }
+
+.logo .tagline {
+    font-size: var(--font-size-xs);
+    color: var(--text-lighter);
+    margin-bottom: 0;
+}
+
+/* 主导航 */
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-xl);
+}
+
+.main-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: var(--spacing-sm) 0;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+    .main-nav a:hover,
+    .main-nav a.active {
+        color: var(--primary-color);
+    }
+
+        .main-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+/* 菜单切换按钮（移动端） */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+    .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: var(--text-color);
+        border-radius: var(--border-radius-full);
+        transition: all var(--transition-base);
+    }
+
+/* 主横幅 */
+.hero {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    color: white;
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-md);
+    color: white;
+}
+
+.hero-content p {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xl);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-content .btn {
+    margin: 0 var(--spacing-sm);
+}
+
+/* 特色部分 */
+.features {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--background-light);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+.feature-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background-color: var(--background-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-card h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+}
+
+.feature-card p {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* 狗狗展示部分 */
+.dogs-section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.dogs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+#dogs-count span {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.view-options {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.view-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+    .view-btn.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+/* 狗狗网格布局 */
+.dog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* 狗狗卡片 */
+.dog-card {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+    .dog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .dog-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+
+.dog-info {
+    padding: var(--spacing-lg);
+}
+
+    .dog-info h3 {
+        margin-bottom: var(--spacing-xs);
+        font-size: var(--font-size-xl);
+        color: var(--text-color);
+    }
+
+    .dog-info p {
+        margin-bottom: var(--spacing-xs);
+        color: var(--text-light);
+        font-size: var(--font-size-sm);
+    }
+
+    .dog-info .price {
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        color: var(--secondary-color);
+        margin-top: var(--spacing-sm);
+    }
+
+.dog-card .btn-view-details {
+    width: 100%;
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+    .dog-card .btn-view-details:hover {
+        background-color: var(--primary-dark);
+    }
+
+/* 狗狗列表布局 */
+.dog-list-layout .dog-card {
+    display: flex;
+    flex-direction: row;
+}
+
+    .dog-list-layout .dog-card img {
+        width: 200px;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+.dog-list-layout .dog-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 分页样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-2xl);
+}
+
+.pagination-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+    .pagination-btn:hover:not(:disabled) {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    .pagination-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+.page-numbers {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.page-number {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+    .page-number.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    .page-number:hover:not(.active) {
+        background-color: var(--background-dark);
+    }
+
+/* 无结果样式 */
+.no-results {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-lg);
+    margin: var(--spacing-2xl) 0;
+}
+
+    .no-results h3 {
+        color: var(--text-color);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .no-results p {
+        color: var(--text-light);
+        margin-bottom: var(--spacing-lg);
+    }
+
+/* 筛选部分 */
+.filter-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--background-light);
+}
+
+.search-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.search-box {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+    .search-box input {
+        flex: 1;
+        padding: var(--spacing-md);
+        border: 1px solid var(--border-color);
+        border-right: none;
+        border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+        font-size: var(--font-size-base);
+    }
+
+    .search-box button {
+        border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+        white-space: nowrap;
+    }
+
+.search-info {
+    text-align: center;
+    margin-top: var(--spacing-sm);
+    color: var(--text-lighter);
+    font-size: var(--font-size-sm);
+}
+
+/* 筛选器样式 */
+.filters-container {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-xl);
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.filter-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+    .filter-group label {
+        margin-bottom: var(--spacing-xs);
+        font-weight: 500;
+        color: var(--text-color);
+    }
+
+    .filter-group select,
+    .filter-group input {
+        padding: var(--spacing-sm);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-md);
+        font-size: var(--font-size-base);
+    }
+
+.price-range {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+    .price-range input[type="range"] {
+        width: 100%;
+        height: 6px;
+        background: var(--background-light);
+        border-radius: var(--border-radius-full);
+        outline: none;
+    }
+
+.price-display {
+    text-align: center;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* 排序选项 */
+.sort-container {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.sort-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.sort-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.sort-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--background-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+    .sort-btn.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+
+    .sort-btn:hover:not(.active) {
+        background-color: var(--background-dark);
+    }
+
+/* 页脚样式 */
+.footer {
+    background-color: var(--text-color);
+    color: white;
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+}
+
+    .footer a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+        .footer a:hover {
+            color: white;
+        }
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.footer-section h3 {
+    color: white;
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-lg);
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+    .footer-section ul li {
+        margin-bottom: var(--spacing-sm);
+    }
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    .footer-bottom p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: var(--spacing-md);
+    }
+
+.validator-links {
+    font-size: var(--font-size-sm);
+}
+
+/* 页面标题样式 */
+.page-header {
+    padding: var(--spacing-2xl) 0;
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+    .page-header h1 {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .page-header p {
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+/* 关于我们页面样式 */
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-2xl) 0;
+}
+
+.about-text h2 {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.value-card {
+    padding: var(--spacing-lg);
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-lg);
+    border-left: 4px solid var(--primary-color);
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.step {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto var(--spacing-md);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.team-member {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-lg);
+}
+
+.member-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    font-weight: bold;
+    margin: 0 auto var(--spacing-md);
+}
+
+.member-title {
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.stat-card {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius-lg);
+}
+
+    .stat-card h3 {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--spacing-xs);
+        color: white;
+    }
+
+    .stat-card p {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 0;
+    }
+
+/* 联系部分样式 */
+.contact-section {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--background-light);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-info h3 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.social-link {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+}
+
+    .social-link:hover {
+        background-color: var(--primary-dark);
+        color: white;
+    }
+
+.contact-form {
+    background-color: var(--background-color);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* 狗狗详情页样式 */
+.dog-detail-section {
+    padding: var(--spacing-2xl) 0;
+}
+
+#dog-detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dog-detail {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.dog-detail-header {
+    position: relative;
+}
+
+.dog-detail-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.dog-detail-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-full);
+    font-weight: 600;
+}
+
+.dog-detail-content {
+    padding: var(--spacing-2xl);
+}
+
+.dog-detail-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+    .dog-detail-title h2 {
+        margin-bottom: 0;
+        font-size: var(--font-size-3xl);
+    }
+
+.dog-detail-price {
+    font-size: var(--font-size-3xl);
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.dog-detail-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-lg);
+}
+
+.info-item {
+    text-align: center;
+}
+
+    .info-item h4 {
+        font-size: var(--font-size-sm);
+        color: var(--text-light);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .info-item p {
+        font-size: var(--font-size-lg);
+        font-weight: 600;
+        color: var(--text-color);
+        margin-bottom: 0;
+    }
+
+.dog-detail-description {
+    margin-bottom: var(--spacing-xl);
+}
+
+.dog-detail-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.back-to-dogs {
+    text-align: center;
+    margin-top: var(--spacing-2xl);
+}
+
+/* 特色狗狗部分 */
+.featured-dogs {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--background-light);
+}

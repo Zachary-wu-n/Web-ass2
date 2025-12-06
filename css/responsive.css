@@ -1,0 +1,429 @@
+﻿/* responsive.css - 响应式样式 */
+
+/* 大屏幕设备（桌面） */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* 中等屏幕设备（平板横屏、小桌面） */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .dog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 小屏幕设备（平板竖屏） */
+@media (max-width: 991px) and (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .dog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h2 {
+        font-size: var(--font-size-3xl);
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .about-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .stat-card {
+        flex: 1;
+        min-width: 150px;
+    }
+}
+
+/* 超小屏幕设备（手机） */
+@media (max-width: 767px) {
+    .container {
+        max-width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+
+    /* 移动端菜单 */
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--background-color);
+        box-shadow: var(--shadow-lg);
+        padding: var(--spacing-lg);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-base);
+        z-index: 999;
+    }
+
+        .main-nav.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .main-nav ul {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .main-nav a {
+            display: block;
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+            .main-nav a:last-child {
+                border-bottom: none;
+            }
+
+    /* 移动端菜单按钮动画 */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* 横幅调整 */
+    .hero {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .hero-content h2 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .hero-content p {
+        font-size: var(--font-size-base);
+    }
+
+    .hero-content .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    /* 网格调整 */
+    .dog-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .dog-list-layout .dog-card {
+        flex-direction: column;
+    }
+
+        .dog-list-layout .dog-card img {
+            width: 100%;
+            height: 200px;
+        }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .filter-form {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .sort-options {
+        flex-direction: column;
+    }
+
+    .sort-btn {
+        width: 100%;
+    }
+
+    /* 头部调整 */
+    .dogs-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .view-options {
+        align-self: flex-end;
+    }
+
+    /* 关于页面调整 */
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 联系页面调整 */
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* 页脚调整 */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    /* 分页调整 */
+    .pagination {
+        flex-wrap: wrap;
+    }
+
+    .page-numbers {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: var(--spacing-md);
+    }
+
+    /* 狗狗详情调整 */
+    .dog-detail-image {
+        height: 250px;
+    }
+
+    .dog-detail-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .dog-detail-actions {
+        flex-direction: column;
+    }
+
+        .dog-detail-actions .btn {
+            width: 100%;
+        }
+
+    /* 搜索框调整 */
+    .search-box {
+        flex-direction: column;
+    }
+
+        .search-box input {
+            border-right: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .search-box button {
+            border-radius: var(--border-radius-md);
+            width: 100%;
+        }
+}
+
+/* 非常小的屏幕设备（小手机） */
+@media (max-width: 480px) {
+    :root {
+        --font-size-4xl: 1.75rem; /* 28px */
+        --font-size-3xl: 1.5rem; /* 24px */
+        --font-size-2xl: 1.25rem; /* 20px */
+        --font-size-xl: 1.125rem; /* 18px */
+        --font-size-lg: 1rem; /* 16px */
+        --font-size-base: 0.875rem; /* 14px */
+        --font-size-sm: 0.75rem; /* 12px */
+    }
+
+    h1 {
+        font-size: var(--font-size-3xl);
+    }
+
+    h2 {
+        font-size: var(--font-size-2xl);
+    }
+
+    h3 {
+        font-size: var(--font-size-xl);
+    }
+
+    .hero-content h2 {
+        font-size: var(--font-size-2xl);
+    }
+
+    .featured-dogs .section-title,
+    .dogs-section .section-title {
+        font-size: var(--font-size-2xl);
+    }
+
+    .dog-detail-price {
+        font-size: var(--font-size-2xl);
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-base);
+    }
+
+    /* 调整间距 */
+    .hero,
+    .features,
+    .featured-dogs,
+    .dogs-section,
+    .about-section,
+    .contact-section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    /* 卡片内边距调整 */
+    .dog-info,
+    .feature-card,
+    .value-card,
+    .step,
+    .team-member,
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+
+    .filter-form,
+    .sort-container,
+    .filters-container {
+        padding: var(--spacing-md);
+    }
+
+    /* 隐藏一些非必要元素 */
+    .search-info,
+    .tagline {
+        display: none;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .header,
+    .footer,
+    .filter-section,
+    .view-options,
+    .pagination,
+    .menu-toggle {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .dog-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .dog-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    /* 确保链接显示URL */
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        font-weight: normal;
+    }
+
+    /* 不显示内部链接的URL */
+    a[href^="#"]::after,
+    a[href^="javascript"]::after {
+        content: "";
+    }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #0056b3;
+        --secondary-color: #d48806;
+        --text-color: #000000;
+        --text-light: #333333;
+        --border-color: #000000;
+    }
+
+    .dog-card,
+    .feature-card,
+    .value-card {
+        border: 2px solid var(--border-color);
+    }
+}
+
+/* 减少动画模式支持 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}

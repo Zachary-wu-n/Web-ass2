@@ -1,0 +1,825 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our pet dogs with search, filter, and sort functionality">
+    <meta name="keywords" content="dog search, dog filter, dog sort, pet purchase">
+    <title>Dogs - Pet Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">Pet Home</a></h1>
+                <p class="tagline">Find Your Perfect Companion</p>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dogs.html" class="active">Dogs</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Navigation Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Dogs Collection</h1>
+            <p>Browse our lovely pet dogs, use search, filter and sort functions to find your perfect companion</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <!-- Search Box -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search dog name, breed or description...">
+                    <button id="search-btn" class="btn btn-primary">
+                        <span>Search</span>
+                    </button>
+                </div>
+                <div class="search-info">
+                    <p>You can search by dog name, breed or keywords in description</p>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-container">
+                <div class="filter-header">
+                    <h3>Filter Criteria</h3>
+                    <button id="reset-filters" class="btn btn-secondary">Reset Filters</button>
+                </div>
+
+                <form id="filter-form" class="filter-form">
+                    <div class="filter-group">
+                        <label for="breed-filter">Breed:</label>
+                        <select id="breed-filter" name="breed">
+                            <option value="">All Breeds</option>
+                            <option value="Bichon Frise">Bichon Frise</option>
+                            <option value="Golden Retriever">Golden Retriever</option>
+                            <option value="Poodle">Poodle</option>
+                            <option value="Husky">Husky</option>
+                            <option value="Corgi">Corgi</option>
+                            <option value="Border Collie">Border Collie</option>
+                            <option value="Shiba Inu">Shiba Inu</option>
+                            <option value="French Bulldog">French Bulldog</option>
+                            <option value="Samoyed">Samoyed</option>
+                            <option value="Labrador Retriever">Labrador Retriever</option>
+                            <option value="Chinese Rural Dog">Chinese Rural Dog</option>
+                            <option value="Pomeranian">Pomeranian</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="size-filter">Size:</label>
+                        <select id="size-filter" name="size">
+                            <option value="">All Sizes</option>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="gender-filter">Gender:</label>
+                        <select id="gender-filter" name="gender">
+                            <option value="">All Genders</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="price-filter">Max Price:</label>
+                        <div class="price-range">
+                            <input type="range" id="price-range" name="maxPrice" min="0" max="10000" step="500" value="10000">
+                            <div class="price-display">
+                                <span id="price-value">10000</span> ¥
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="vaccinated-filter">Vaccinated:</label>
+                        <select id="vaccinated-filter" name="vaccinated">
+                            <option value="">All</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="trained-filter">Trained:</label>
+                        <select id="trained-filter" name="trained">
+                            <option value="">All</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Sort Options -->
+            <div class="sort-container">
+                <div class="sort-header">
+                    <h3>Sort By</h3>
+                </div>
+                <div class="sort-options">
+                    <button class="sort-btn active" data-sort="default" data-order="asc">Default</button>
+                    <button class="sort-btn" data-sort="price" data-order="asc">Price: Low to High</button>
+                    <button class="sort-btn" data-sort="price" data-order="desc">Price: High to Low</button>
+                    <button class="sort-btn" data-sort="age" data-order="asc">Age: Young to Old</button>
+                    <button class="sort-btn" data-sort="age" data-order="desc">Age: Old to Young</button>
+                    <button class="sort-btn" data-sort="name" data-order="asc">Name: A to Z</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dogs Display Section -->
+    <section class="dogs-section">
+        <div class="container">
+            <div class="dogs-header">
+                <h2 id="dogs-count">Found <span>12</span> dogs</h2>
+                <div class="view-options">
+                    <button id="grid-view" class="view-btn active" aria-label="Grid View">
+                        <span>Grid View</span>
+                    </button>
+                    <button id="list-view" class="view-btn" aria-label="List View">
+                        <span>List View</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="dog-list" class="dog-grid">
+                <!-- Dog cards will be generated by JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <button id="prev-page" class="pagination-btn" disabled>Previous</button>
+                <div class="page-numbers" id="page-numbers">
+                    <button class="page-number active" data-page="1">1</button>
+                    <button class="page-number" data-page="2">2</button>
+                </div>
+                <button id="next-page" class="pagination-btn">Next</button>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="no-results" style="display: none;">
+                <h3>No dogs found matching your criteria</h3>
+                <p>Please try adjusting your filters or search keywords</p>
+                <button id="reset-all" class="btn btn-primary">Reset All Filters</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Pet Home</h3>
+                    <p>Dedicated to connecting loving families with quality pet dogs, allowing every family to find the perfect pet companion.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dogs.html">Dogs</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: <a href="mailto:contact@petdogwebsite.com">contact@petdogwebsite.com</a></p>
+                    <p>Phone: 400-123-4567</p>
+                    <p>Address: 123 Pet Avenue, Chaoyang District, Beijing</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Pet Home. All rights reserved.</p>
+                <div class="validator-links">
+                    <a href="https://validator.w3.org/" target="_blank">HTML5 Validator</a> |
+                    <a href="https://jigsaw.w3.org/css-validator/" target="_blank">CSS3 Validator</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Dogs Page Specific Script -->
+    <script>
+        // Enhanced Simple Search Implementation
+        class EnhancedSearch {
+            constructor() {
+                this.searchInput = document.getElementById('search-input');
+                this.searchBtn = document.getElementById('search-btn');
+                this.dogListContainer = document.getElementById('dog-list');
+                this.dogsCountElement = document.getElementById('dogs-count');
+                this.noResultsElement = document.getElementById('no-results');
+                this.resetAllButton = document.getElementById('reset-all');
+
+                this.init();
+            }
+
+            init() {
+                // Bind search events
+                if (this.searchBtn) {
+                    this.searchBtn.addEventListener('click', () => this.performSearch());
+                }
+
+                if (this.searchInput) {
+                    this.searchInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') this.performSearch();
+                    });
+                }
+
+                // Bind reset all button
+                if (this.resetAllButton) {
+                    this.resetAllButton.addEventListener('click', () => this.resetAllFilters());
+                }
+
+                // Initialize with default data
+                this.loadInitialDogs();
+            }
+
+            loadInitialDogs() {
+                // Create initial dog cards
+                const initialDogs = [
+                    {
+                        id: 1,
+                        name: 'Xiao Bai',
+                        breed: 'Bichon Frise',
+                        age: 2,
+                        price: 1500,
+                        description: 'A lively and cute white Bichon Frise, very affectionate and loves to play. All vaccinations completed, in good health.',
+                        gender: 'Male',
+                        size: 'Small',
+                        color: 'White',
+                        vaccinated: true,
+                        trained: true,
+                        featured: true,
+                        image: 'images/dogs/bichon.jpg'
+                    },
+                    {
+                        id: 2,
+                        name: 'Wang Cai',
+                        breed: 'Golden Retriever',
+                        age: 1,
+                        price: 2500,
+                        description: 'Gentle and intelligent Golden Retriever, friendly personality, suitable for family keeping. Basic training completed.',
+                        gender: 'Male',
+                        size: 'Large',
+                        color: 'Golden',
+                        vaccinated: true,
+                        trained: true,
+                        featured: true,
+                        image: 'images/dogs/golden.jpg'
+                    },
+                    {
+                        id: 3,
+                        name: 'Niu Niu',
+                        breed: 'Poodle',
+                        age: 3,
+                        price: 1200,
+                        description: 'Smart and clever Poodle, small size, suitable for apartment living. Already spayed/neutered.',
+                        gender: 'Female',
+                        size: 'Small',
+                        color: 'Brown',
+                        vaccinated: true,
+                        trained: false,
+                        featured: true,
+                        image: 'images/dogs/poodle.jpg'
+                    },
+                    {
+                        id: 4,
+                        name: 'Er Ha',
+                        breed: 'Husky',
+                        age: 2,
+                        price: 3000,
+                        description: 'Energetic Husky, requires plenty of exercise, friendly but a bit mischievous.',
+                        gender: 'Male',
+                        size: 'Large',
+                        color: 'Black and White',
+                        vaccinated: true,
+                        trained: false,
+                        featured: false,
+                        image: 'images/dogs/husky.jpg'
+                    },
+                    {
+                        id: 5,
+                        name: 'Short Legs',
+                        breed: 'Corgi',
+                        age: 1,
+                        price: 2800,
+                        description: 'Lovely Corgi with short legs and big ears, lively personality, enjoys interacting with people.',
+                        gender: 'Female',
+                        size: 'Medium',
+                        color: 'Yellow and White',
+                        vaccinated: true,
+                        trained: true,
+                        featured: false,
+                        image: 'images/dogs/corgi.jpg'
+                    },
+                    {
+                        id: 6,
+                        name: 'Cong Cong',
+                        breed: 'Border Collie',
+                        age: 2,
+                        price: 3500,
+                        description: 'Very intelligent Border Collie, strong learning ability, suitable for experienced owners.',
+                        gender: 'Male',
+                        size: 'Medium',
+                        color: 'Black and White',
+                        vaccinated: true,
+                        trained: true,
+                        featured: false,
+                        image: 'images/dogs/border-collie.jpg'
+                    },
+                    {
+                        id: 7,
+                        name: 'Dou Dou',
+                        breed: 'Shiba Inu',
+                        age: 2,
+                        price: 3200,
+                        description: 'Loyal and independent Shiba Inu, expressive face, requires proper training and socialization.',
+                        gender: 'Male',
+                        size: 'Medium',
+                        color: 'Tan',
+                        vaccinated: true,
+                        trained: false,
+                        featured: false,
+                        image: 'images/dogs/shiba.jpg'
+                    },
+                    {
+                        id: 8,
+                        name: 'Qiu Qiu',
+                        breed: 'French Bulldog',
+                        age: 3,
+                        price: 4000,
+                        description: 'Gentle and lovely French Bulldog, suitable for indoor living, doesn\'t require much exercise.',
+                        gender: 'Female',
+                        size: 'Small',
+                        color: 'Brindle',
+                        vaccinated: true,
+                        trained: true,
+                        featured: false,
+                        image: 'images/dogs/french-bulldog.jpg'
+                    },
+                    {
+                        id: 9,
+                        name: 'Mao Mao',
+                        breed: 'Samoyed',
+                        age: 1,
+                        price: 3800,
+                        description: 'Smiling angel Samoyed, gentle personality, requires regular grooming.',
+                        gender: 'Male',
+                        size: 'Large',
+                        color: 'White',
+                        vaccinated: true,
+                        trained: false,
+                        featured: false,
+                        image: 'images/dogs/samoyed.jpg'
+                    },
+                    {
+                        id: 10,
+                        name: 'Guai Guai',
+                        breed: 'Labrador Retriever',
+                        age: 2,
+                        price: 2800,
+                        description: 'Gentle and friendly Labrador Retriever, suitable as a family pet or working dog.',
+                        gender: 'Female',
+                        size: 'Large',
+                        color: 'Black',
+                        vaccinated: true,
+                        trained: true,
+                        featured: false,
+                        image: 'images/dogs/labrador.jpg'
+                    },
+                    {
+                        id: 11,
+                        name: 'Xiao Huang',
+                        breed: 'Chinese Rural Dog',
+                        age: 1,
+                        price: 800,
+                        description: 'Intelligent and loyal Chinese Rural Dog, strong adaptability, easy to care for.',
+                        gender: 'Male',
+                        size: 'Medium',
+                        color: 'Yellow',
+                        vaccinated: true,
+                        trained: false,
+                        featured: false,
+                        image: 'images/dogs/chinese-rural.jpg'
+                    },
+                    {
+                        id: 12,
+                        name: 'Hua Hua',
+                        breed: 'Pomeranian',
+                        age: 2,
+                        price: 2200,
+                        description: 'Lively and lovely Pomeranian, small size, suitable for companionship.',
+                        gender: 'Female',
+                        size: 'Small',
+                        color: 'White',
+                        vaccinated: true,
+                        trained: true,
+                        featured: false,
+                        image: 'images/dogs/pomeranian.jpg'
+                    }
+                ];
+
+                this.allDogs = initialDogs;
+                this.currentDogs = [...this.allDogs];
+
+                // Render initial dogs
+                this.renderDogList(this.currentDogs);
+                this.updatePagination(1, 2);
+            }
+
+            renderDogList(dogs) {
+                this.dogListContainer.innerHTML = '';
+
+                if (dogs.length === 0) {
+                    this.showNoResults();
+                    return;
+                }
+
+                dogs.forEach(dog => {
+                    const dogCard = this.createDogCard(dog);
+                    this.dogListContainer.appendChild(dogCard);
+                });
+
+                this.updateDogsCount(dogs.length);
+                this.hideNoResults();
+            }
+
+            createDogCard(dog) {
+                const card = document.createElement('div');
+                card.className = 'dog-card';
+                card.innerHTML = `
+                        <img src="${dog.image}" alt="${dog.name}" onerror="this.src='images/default-dog.jpg'">
+                        <div class="dog-info">
+                            <div class="dog-header">
+                                <h3>${dog.name}</h3>
+                                <span class="dog-badge ${dog.featured ? 'featured' : ''}">
+                                    ${dog.featured ? 'Featured' : dog.breed}
+                                </span>
+                            </div>
+                            <div class="dog-meta">
+                                <span class="age">${dog.age} years</span>
+                                <span class="gender">${dog.gender}</span>
+                                <span class="size">${dog.size}</span>
+                                <span class="color">${dog.color}</span>
+                            </div>
+                            <p class="description">${dog.description.substring(0, 100)}...</p>
+                            <div class="dog-features">
+                                <span class="feature" title="Vaccinated">${dog.vaccinated ? '✅' : '❌'} Vaccinated</span>
+                                <span class="feature" title="Trained">${dog.trained ? '✅' : '❌'} Trained</span>
+                            </div>
+                            <div class="dog-footer">
+                                <span class="price">¥${dog.price.toLocaleString()}</span>
+                                <div class="dog-actions">
+                                    <a href="dog-detail.html?id=${dog.id}" class="btn btn-primary">View Details</a>
+                                    <button class="btn btn-secondary btn-contact" data-id="${dog.id}">Inquire</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                return card;
+            }
+
+            performSearch() {
+                const keyword = this.searchInput.value.trim().toLowerCase();
+                const breedFilter = document.getElementById('breed-filter').value;
+                const sizeFilter = document.getElementById('size-filter').value;
+                const genderFilter = document.getElementById('gender-filter').value;
+                const maxPrice = parseInt(document.getElementById('price-range').value);
+                const vaccinatedFilter = document.getElementById('vaccinated-filter').value;
+                const trainedFilter = document.getElementById('trained-filter').value;
+
+                // Apply search and filters
+                const results = this.allDogs.filter(dog => {
+                    // Search filter
+                    const matchesSearch = keyword === '' ||
+                        dog.name.toLowerCase().includes(keyword) ||
+                        dog.breed.toLowerCase().includes(keyword) ||
+                        dog.description.toLowerCase().includes(keyword);
+
+                    // Breed filter
+                    const matchesBreed = breedFilter === '' || dog.breed === breedFilter;
+
+                    // Size filter
+                    const matchesSize = sizeFilter === '' || dog.size === sizeFilter;
+
+                    // Gender filter
+                    const matchesGender = genderFilter === '' || dog.gender === genderFilter;
+
+                    // Price filter
+                    const matchesPrice = dog.price <= maxPrice;
+
+                    // Vaccinated filter
+                    const matchesVaccinated = vaccinatedFilter === '' ||
+                        (vaccinatedFilter === 'true' && dog.vaccinated) ||
+                        (vaccinatedFilter === 'false' && !dog.vaccinated);
+
+                    // Trained filter
+                    const matchesTrained = trainedFilter === '' ||
+                        (trainedFilter === 'true' && dog.trained) ||
+                        (trainedFilter === 'false' && !dog.trained);
+
+                    return matchesSearch && matchesBreed && matchesSize &&
+                        matchesGender && matchesPrice && matchesVaccinated && matchesTrained;
+                });
+
+                // Apply sorting
+                const activeSortBtn = document.querySelector('.sort-btn.active');
+                if (activeSortBtn) {
+                    const sortBy = activeSortBtn.dataset.sort;
+                    const order = activeSortBtn.dataset.order;
+                    this.sortResults(results, sortBy, order);
+                } else {
+                    this.currentDogs = results;
+                }
+
+                // Update view
+                this.renderDogList(results);
+                this.updatePagination(1, Math.ceil(results.length / 6));
+            }
+
+            sortResults(dogs, sortBy, order) {
+                const sorted = [...dogs];
+
+                sorted.sort((a, b) => {
+                    let comparison = 0;
+
+                    switch (sortBy) {
+                        case 'price':
+                            comparison = a.price - b.price;
+                            break;
+                        case 'age':
+                            comparison = a.age - b.age;
+                            break;
+                        case 'name':
+                            comparison = a.name.localeCompare(b.name);
+                            break;
+                        default:
+                            comparison = a.id - b.id;
+                            break;
+                    }
+
+                    return order === 'asc' ? comparison : -comparison;
+                });
+
+                this.currentDogs = sorted;
+                this.renderDogList(sorted);
+            }
+
+            updateDogsCount(count) {
+                if (this.dogsCountElement) {
+                    const span = this.dogsCountElement.querySelector('span');
+                    if (span) {
+                        span.textContent = count;
+                    }
+                }
+            }
+
+            updatePagination(currentPage, totalPages) {
+                const prevBtn = document.getElementById('prev-page');
+                const nextBtn = document.getElementById('next-page');
+                const pageNumbers = document.getElementById('page-numbers');
+
+                if (prevBtn) prevBtn.disabled = currentPage === 1;
+                if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+
+                if (pageNumbers) {
+                    pageNumbers.innerHTML = '';
+                    for (let i = 1; i <= totalPages; i++) {
+                        const pageBtn = document.createElement('button');
+                        pageBtn.className = `page-number ${i === currentPage ? 'active' : ''}`;
+                        pageBtn.textContent = i;
+                        pageBtn.dataset.page = i;
+                        pageBtn.addEventListener('click', () => this.goToPage(i));
+                        pageNumbers.appendChild(pageBtn);
+                    }
+                }
+            }
+
+            goToPage(page) {
+                // In a real implementation, this would load the specific page
+                console.log(`Go to page ${page}`);
+            }
+
+            showNoResults() {
+                if (this.noResultsElement) {
+                    this.noResultsElement.style.display = 'block';
+                }
+                this.updateDogsCount(0);
+            }
+
+            hideNoResults() {
+                if (this.noResultsElement) {
+                    this.noResultsElement.style.display = 'none';
+                }
+            }
+
+            resetAllFilters() {
+                // Reset search input
+                if (this.searchInput) {
+                    this.searchInput.value = '';
+                }
+
+                // Reset filter selects
+                const filterForm = document.getElementById('filter-form');
+                if (filterForm) {
+                    filterForm.reset();
+                }
+
+                // Reset price range display
+                const priceValue = document.getElementById('price-value');
+                if (priceValue) {
+                    priceValue.textContent = '10000';
+                }
+
+                // Reset sort to default
+                const sortBtns = document.querySelectorAll('.sort-btn');
+                sortBtns.forEach(btn => {
+                    if (btn.dataset.sort === 'default') {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Reset view to grid
+                const gridViewBtn = document.getElementById('grid-view');
+                const listViewBtn = document.getElementById('list-view');
+                if (gridViewBtn && listViewBtn) {
+                    gridViewBtn.classList.add('active');
+                    listViewBtn.classList.remove('active');
+                    this.dogListContainer.className = 'dog-grid';
+                }
+
+                // Show all dogs
+                this.currentDogs = [...this.allDogs];
+                this.renderDogList(this.currentDogs);
+                this.updatePagination(1, Math.ceil(this.currentDogs.length / 6));
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Page loaded, initializing...');
+
+            // Initialize enhanced search
+            const searchSystem = new EnhancedSearch();
+
+            // Setup sort buttons
+            const sortButtons = document.querySelectorAll('.sort-btn');
+            sortButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    const sortBy = e.target.dataset.sort;
+                    const order = e.target.dataset.order;
+
+                    // Update active button
+                    sortButtons.forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    // Sort current dogs
+                    searchSystem.sortResults(searchSystem.currentDogs, sortBy, order);
+                });
+            });
+
+            // Setup view toggle buttons
+            const gridViewBtn = document.getElementById('grid-view');
+            const listViewBtn = document.getElementById('list-view');
+
+            if (gridViewBtn && listViewBtn) {
+                gridViewBtn.addEventListener('click', function () {
+                    gridViewBtn.classList.add('active');
+                    listViewBtn.classList.remove('active');
+                    document.getElementById('dog-list').className = 'dog-grid';
+                });
+
+                listViewBtn.addEventListener('click', function () {
+                    listViewBtn.classList.add('active');
+                    gridViewBtn.classList.remove('active');
+                    document.getElementById('dog-list').className = 'dog-grid dog-list-layout';
+                });
+            }
+
+            // Setup filter change events
+            const filterForm = document.getElementById('filter-form');
+            if (filterForm) {
+                filterForm.addEventListener('change', () => {
+                    searchSystem.performSearch();
+                });
+            }
+
+            // Setup price range display
+            const priceRange = document.getElementById('price-range');
+            const priceValue = document.getElementById('price-value');
+            if (priceRange && priceValue) {
+                priceRange.addEventListener('input', function () {
+                    priceValue.textContent = this.value;
+                    searchSystem.performSearch();
+                });
+            }
+
+            // Setup reset filters button
+            const resetFiltersBtn = document.getElementById('reset-filters');
+            if (resetFiltersBtn) {
+                resetFiltersBtn.addEventListener('click', function () {
+                    const filterForm = document.getElementById('filter-form');
+                    if (filterForm) {
+                        filterForm.reset();
+                    }
+                    if (priceValue) {
+                        priceValue.textContent = '10000';
+                    }
+                    searchSystem.performSearch();
+                });
+            }
+
+            // Setup pagination
+            const prevPageBtn = document.getElementById('prev-page');
+            const nextPageBtn = document.getElementById('next-page');
+
+            if (prevPageBtn) {
+                prevPageBtn.addEventListener('click', function () {
+                    const activePage = document.querySelector('.page-number.active');
+                    if (activePage) {
+                        const currentPage = parseInt(activePage.dataset.page);
+                        if (currentPage > 1) {
+                            searchSystem.goToPage(currentPage - 1);
+                        }
+                    }
+                });
+            }
+
+            if (nextPageBtn) {
+                nextPageBtn.addEventListener('click', function () {
+                    const activePage = document.querySelector('.page-number.active');
+                    const pageNumbers = document.querySelectorAll('.page-number');
+                    if (activePage && pageNumbers.length > 0) {
+                        const currentPage = parseInt(activePage.dataset.page);
+                        if (currentPage < pageNumbers.length) {
+                            searchSystem.goToPage(currentPage + 1);
+                        }
+                    }
+                });
+            }
+
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function () {
+                    mainNav.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                });
+
+                // Close menu when clicking links
+                document.querySelectorAll('.main-nav a').forEach(link => {
+                    link.addEventListener('click', function () {
+                        mainNav.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    });
+                });
+            }
+
+            // Add contact button functionality
+            document.addEventListener('click', function (e) {
+                if (e.target.classList.contains('btn-contact')) {
+                    const dogId = parseInt(e.target.dataset.id);
+                    const dog = searchSystem.allDogs.find(d => d.id === dogId);
+                    if (dog) {
+                        alert(`Connecting you to customer service for information about ${dog.name}...\nCustomer Service Phone: 400-123-4567`);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
